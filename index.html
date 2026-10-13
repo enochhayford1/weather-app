@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
+    <script src="ui.js" defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
@@ -9,5 +10,18 @@
 <body>
     <h3>This is a basic weather app. You can search a location below and get the weather for it - try to be specific</h3>
     <h3>Temperatures are shown in Celcius by default. You can click the toggle button to change this.</h3>
+    <button id="search_location">Search weather for a location</button>
+
+    <div id="form">
+        <label for="locationSearch">Enter the location you want weather for</label>
+        <input type="text"id="locationSearch">
+
+
+        <button id="submit-location">Submit</button>
+    </div>
+
+    <div id="weather_data">
+
+    </div>
 </body>
 </html>
