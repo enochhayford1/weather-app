@@ -10,14 +10,16 @@ weather.description
 */
 
 
-async function getWeatherData(location) {
+async function getWeatherDataForLocation(location) {
+    console.log(location);
     const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=DAH8L795LG967JGPKPW7BVQEZ`);
     const weatherData = await response.json();
+    console.log(weatherData)
     return weatherData;
 }
 
 function processWeatherData(weatherData) {
-    const requiredInfoKeys = ['currentConditions', 'temp', 'description'];
+    const requiredInfoKeys = ['currentConditions', 'temp', 'description', 'resolvedAddress'];
 
     const requiredInfo = Object.fromEntries(
         Object.entries(weatherData).filter(([key]) => {
@@ -27,6 +29,13 @@ function processWeatherData(weatherData) {
 
     return requiredInfo;
 }
+
+async function getWeather(location) {
+    const weatherData = await getWeatherDataForLocation(location);
+    const weather = processWeatherData(weatherData);
+    return weather;
+}
+
 
 function convertToCelcius(temp) {
     return ((temp - 32) * 5/9).toFixed(1);
