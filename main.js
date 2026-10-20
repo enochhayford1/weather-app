@@ -11,7 +11,6 @@ weather.description
 
 
 async function getWeatherDataForLocation(location) {
-    console.log(location);
     const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=DAH8L795LG967JGPKPW7BVQEZ`);
     const weatherData = await response.json();
     console.log(weatherData)
