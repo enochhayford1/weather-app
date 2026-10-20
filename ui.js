@@ -11,6 +11,10 @@ showFormButton.addEventListener('click', () => {
 
 
 submitButton.addEventListener("click", async () => {
+    
+    form.style.visibility = 'hidden';
+    showFormButton.style.visibility = 'hidden';
+    
     const weather =  await getWeather(locationSearch.value);
     console.log(weather);
 
@@ -72,6 +76,13 @@ submitButton.addEventListener("click", async () => {
         }
     });
 
+    const refresh = document.createElement('button');
+    refresh.textContent = 'Search again';
+
+    refresh.addEventListener('click' ,() => {
+        window.location.reload();
+    });
+
 
     weatherDataHolder.appendChild(address);
     weatherDataHolder.appendChild(conditions);
@@ -80,5 +91,7 @@ submitButton.addEventListener("click", async () => {
     weatherDataHolder.appendChild(humidity);
     weatherDataHolder.appendChild(description);
     weatherDataHolder.appendChild(changeUnit);
+    weatherDataHolder.appendChild(refresh);
+
 
 });
